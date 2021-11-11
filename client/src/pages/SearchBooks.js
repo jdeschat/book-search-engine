@@ -70,7 +70,7 @@ const SearchBooks = () => {
       const { data } = await saveBook({
         variables: { bookData: { ...bookToSave } }
       });
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      // setSavedBookIds([...savedBookIds, bookToSave.bookId]);
       // Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
