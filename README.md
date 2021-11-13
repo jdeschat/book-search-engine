@@ -104,6 +104,8 @@ Made with [contributors-img](https://contrib.rocks).
 •	Mongoose
 •	Heroku
 
+## Questions
+
 My Github username is jdeschat, which can be accessed here https://github.com/jdeschat/book-search-engine.
 
 This app is deployed through Heroku, which can be accessed here https://book-search-engine21.herokuapp.com/
