@@ -8,8 +8,9 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedBooks')
-
+          // tHIS IS WHERE THE PROBLEM IS. IT SAYING THAT SAVED BOOKS IS EMPTY WHEN ITS NOT
+          .populated('savedBooks');
+        console.log(userData);
         return userData;
       }
 
@@ -40,14 +41,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveBook: async (parent, { data }, context) => {
+    saveBook: async (parent, args, context) => {
       if (context.user) {
+        console.log(args);
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedBooks: { data } } },
+          { $push: { savedBooks: args.bookData } },
           { new: true }
         );
-
+        console.log(updateUser);
         return updateUser;
       }
 
